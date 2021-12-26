@@ -1,0 +1,17 @@
+# background img svg
+https://heropatterns.com/ 
+
+
+# bootstrap icons
+https://icons.getbootstrap.com/ 
+
+
+# box shadow
+https://getcssscan.com/css-box-shadow-examples 
+
+# quotes api 
+https://quotes-react.netlify.app/
+https://type.fit/api/quotes
+
+# loading Generator
+https://loading.io/
