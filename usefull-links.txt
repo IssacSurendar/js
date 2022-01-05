@@ -17,3 +17,17 @@ https://type.fit/api/quotes
 
 # loading Generator
 https://loading.io/
+
+
+
+# joke Teller
+# voice text to speech
+http://www.voicerss.org/sdk/javascript.aspx
+https://rapidapi.com/voicerss/api/text-to-speech-1/
+
+# joke api
+https://sv443.net/jokeapi/v2/
+
+
+#illustrations
+https://undraw.co/illustrations
