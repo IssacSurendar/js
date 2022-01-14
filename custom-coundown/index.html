@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Custom Countdown</title>
+        <link rel="stylesheet" href="./style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <video class="video-background" loop muted autoplay>
+            <source src="monkey.mp4"></source>
+        </video>
+        <div class="video-overlay">
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card p-3" id="input-container">
+                        <h3 class="text-center fw-bold">Custom Coundown</h3>
+                        <form action="" class="form mt-3" id="countdownForm">
+                            <div class="form-group mb-2">
+                                <label for="title" class="fw-bold mb-1">Title</label>
+                                <input type="text" class="form-control " id="title" placeholder="What are you counting down to?">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="date-picker" class="fw-bold mb-1">Select a Date</label>
+                                <input type="date" class="form-control " id="date-picker" >
+                            </div>
+                            <div class="form-group mb-2 mt-4">
+                                <input type="submit" class="btn btn-primary w-100" >
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- countdown -->
+                    <div class="card coundown p-3" id="countdown" hidden>
+                        <h3 id="countdown-title" class="text-center fw-bold">Countdown Title Here</h3>
+                        <div  class="mt-2 d-flex text-center">
+                            <div class="w-25"><b style="font-size: 20px;" id="days">3</b><small> <br>Days</small></div>
+                            <div class="w-25"><b style="font-size: 20px;" id="hours">6</b><small> <br>Hours</small></div>
+                            <div class="w-25"><b style="font-size: 20px;" id="minutes">45</b><small> <br>Minutes</small></div>
+                            <div class="w-25"><b style="font-size: 20px;" id="seconds">54</b><small> <br>Seconds</small></div>
+                        </div>
+                        <button id="countdown-button" class="btn mt-4 btn-danger w-25 btn-sm ms-auto">Reset</button>
+                    </div>
+
+                    <!-- complete -->
+                    <div class="complete card p-3" id="complete" hidden>
+                        <h3 class="complete-title text-center fw-bold">Countdown Complete !</h3>
+                        <h6 id="complete-info" class="text-center mb-4">Countdown Finished on 05-05-2020</h6>
+                        <button id="complete-button" class="btn btn-success ">New Countdown</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>

@@ -7,58 +7,156 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+ 
 </head>
 <body >
 
-<div class="container ">
-    <h2>Into</h2>
+<div ng-app="myApp" class="container-fluid ">
+
+    <div class="row">
+
+        <!-- expressions -->
+        <div class="col-8 small my-2">
+            <div class="card p-3 mb-2">
+                <h4 class="fw-bold">1. Intro</h4>
+                <li>JS Framework that helps to build web application.</li>
+                <li>Suitable for Single Page Application </li>
+                <li>Extends html attribute with directives and bind data with expression</li>
+            </div>
+
+            <div class="card p-3 mb-2">
+                <h4 class="fw-bold">2. Expression</h4>
+
+                    <li>Written inside double brace. <mark>{{expression}}</mark></li>
+                    <li class="mb-2">Written also inside directive. <mark>ng-bind="expression"</mark></li>
+                    <div ng-init="color='blue'">
+                        <input type="text" style="background:{{color}}" ng-model="color">
+                    </div>
+
+<h6 class="mb-1">String</h6>
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="" ng-init="myCol='lightblue'">
+<input style="color:{{myCol}}" ng-model="myCol">
+</div></xmp>
+
+<h6 class="mb-1">Number</h6>
+<div ng-init="qty=5;cost=5;">
+    expression: <span>{{qty * cost}}</span> &nbsp; Bind: <span ng-bind="qty * cost"></span>
+</div>
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="" ng-init="quantity=1;cost=5">
+<p>{{ quantity * cost }}</p>
+<p><span ng-bind="quantity * cost"></span></p>
+</div></xmp>
+
+<h6 class="mb-1">Object</h6>
+<div ng-init="person={fn:'surendar', ln:'issac'}">
+    Expression: <span>{{person.fn}}</span> &nbsp; Bind: <span ng-bind="person.ln"></span>
+</div>
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
+<p>{{ person.lastName }}</p>
+<p><span ng-bind="person.lastName"></span></p>
+</div></xmp>
+
+
+<h6 class="mb-1">Array</h6>
+<div ng-init="points=[1,2,3,4,5]">
+    Expression: <span>{{points[0]}}</span>&nbsp; 
+    Bind: <span ng-bind="points[1]"></span>
+</div>
+
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="" ng-init="points=[1,15,19,2,40]">
+<p>{{ points[2] }}</p>
+<p><span ng-bind="points[2]"></span></p>
+</div></xmp>
+
+            </div>
+
+            <div class="card p-3 mb-2">
+                <h4 class="fw-bold">3. Modules</h4>
+
+                    <li>Module defines an application.</li>
+                    <li class="mb-2">Module is a container for the different parts of an application.</li>
+
+
+                    <h6 class="mb-1">Controller</h6>
+
+
+<div ng-controller="joinCtrl">
+    {{firstName+" "+lastName}}
+    <b>Bind : </b> <span ng-bind="firstName"></span> <span ng-bind="lastName"></span>
+</div>                   
+
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+</script></xmp>
+
+
+<h6 class="mb-1">Directives</h6>
+<div test-directive></div>
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="myApp" w3-test-directive></div>
+
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+    return {
+        template : "I was made in a directive constructor!"
+    };
+});
+</script></xmp>
+
+
+<h6 class="mb-1">Repeat Array</h6>
+<div ng-init="names=['surendar', 'issac']">
     <ul>
-        <li>JS Framework that helps to build web application.</li>
-        <li>Suitable for Single Page Application </li>
-        <li>Extends html attribute with directives and bind data with expression</li>
+        <li ng-repeat="i in names">{{ i }}</li>
+        <li ng-repeat="i in names"><span ng-bind="i"></span></li>
     </ul>
-    <div ng-app="myApp" ng-init="firstname='surendar';price=5" >
-        <p>{{color}}</p>
-        <input type="text" ng-model="name">
-        <p ng-bind="name"></p>
-        <!-- ng init -->
-        <div ng-init="fn='john'"></div>
-        <span ng-bind="fn"></span>
-        <br>
-        <!-- expresiion and bind -->
-        <span>{{firstname}}</span>
-        <span ng-bind="price"></span>
-        <!-- controller with module -->
-        <div ng-controller="myCtrl">
-            {{firstName + " " + lastName}}
+</div>
+
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="myApp" ng-init="names=['surendar', 'issac', 'karthick']">
+    <li ng-repeat="x in names">{{}}</li>
+    <li ng-repeat="x in names"><span ng-bind="x"></span></li>
+</div>
+</xmp>
+
+
+<div ng-init="names=[{name:'surendar', age: 12}, {name:'issac', age: 18}]">
+    <li ng-repeat="x in names">{{x.name+x.age}}</li>
+</div>
+<xmp class="small text-white bg-dark px-3 py-2 rounded my-1"><div ng-app="myApp" ng-init="names=[
+        {name:'surendar', age: 12},
+        {name:'issac', age: 16}
+    ]">
+    <ul>
+        <li ng-repeat="x in names">{{x.name+" "+x.age}}</li>
+        <li ng-bind="x in names"><span ng-bind="x.name"></span> <span ng-bind="x.age"></span></li>
+    </ul>
+</div>
+</xmp>
+
+
+
+            </div>
         </div>
 
-        <div ng-controller="myclick">
-            <h1 ng-click="changeName()">{{username}}</h1>
+        <!-- modules -->
+        <div class="col-4 my-2 directives">
+            <div class="card p-3">
+                <h4 class="fw-bold">Directives</h4>
+                <li><mark>ng-app</mark> Intialize as an application.</li>
+                <li><mark>ng-init</mark> Intialize data.</li>
+                <li><mark>ng-bind</mark> Bind the input value to data.</li>
+                <li><mark>ng-repeat</mark> Repeat the html element. (foreach)</li>
+            </div>
         </div>
 
-        <br>
-        <!-- form -->
-        <form name="myForm">
-            Email:
-            <input type="email" name="myAddress" ng-model="text">
-            <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
-        </form>
-        <br>
-        <div ng-controller="unameCtrl">
-            <input type="text" ng-model="fname">
-            <input type="text" ng-model="lname">
-            {{uname()}}
-        </div>
-        <br>
-        <!-- ng repeat -->
-        <ul ng-controller="repeat">
-            <li ng-repeat="i in names">{{i}}</li>
-        </ul>
-
-        <!-- route scope -->
-        <p>The rootScope is available in the entire application.</p>
-        <p>{{color}}</p>
 
     </div>
 
@@ -66,41 +164,29 @@
 
 
 <script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope){
-        $scope.firstName = 'Surendar'
-        $scope.lastName = 'Issac'
-    });
-
-    // onclick function
-    app.controller('myclick', function($scope){
-        $scope.username = 'surendar'
-        $scope.changeName = function(){
-            $scope.username = 'issac'
+    var myapp = angular.module("myApp", [])
+    myapp.controller("joinCtrl", function($scope){
+        $scope.firstName = "Surendar"
+        $scope.lastName = "Issac"
+    })
+    myapp.directive("testDirective", function(){
+        return {
+            template: 'I was made in a directive constructor!'
         }
     })
-
-    // bind data
-    app.controller('unameCtrl', function($scope){
-        $scope.fname = ''
-        $scope.lname = ''
-        $scope.uname = function(){
-            return $scope.fname +" "+ $scope.lname;
-        }
-    })
-
-    // repeat
-    app.controller('repeat', function($scope){
-        $scope.names = ['surendar', 'issac']
-    })
-
-    // root scope
-    app.run(function($rootScope){
-        $rootScope.color = 'RED'
-    })
-    
 </script>
-</div>
+<style>
+    .directives li {
+        margin-bottom: .8rem;
+    }
+    .directives li mark{
+        color: red;
+        background: #ececec;
+        border-radius: 4px;
+        padding: 0px 6px 4px;
 
+    }
+</style>
+</div>
 </body>
 </html>

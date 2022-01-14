@@ -31,3 +31,7 @@ https://sv443.net/jokeapi/v2/
 
 #illustrations
 https://undraw.co/illustrations
+
+#pixbay
+https://pixabay.com/
+https://www.youcompress.com/ - to compress video
